@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "CommonJS",
+    "jsx": "react",
+    "moduleResolution": "Node",
+    "strict": true,
+    "noEmit": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    // Сменить здесь алиасы к вашим папкам.
+    "paths": {
+      "@types/*": [
+        "./types/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@img/*": [
+        "./assets/images/*"
+      ],
+      "@style/*": [
+        "./style/*"
+      ],
+      "@pages/*": [
+        "./pages/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+  ]
+}

@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button:focus-visible {
+  outline: none;
+}
+
+.recharts-layer:focus, .recharts-sector:focus {
+  outline: none !important;
+}
+
+.recharts-pie-label-line {
+  display: none;
+}
+
+.recharts-sector {
+  stroke: #2a4d4e;
+}
