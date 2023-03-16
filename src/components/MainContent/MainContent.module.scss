@@ -3,3 +3,15 @@
   padding: 0 120px;
 }
 
+@media (max-width: 940px) {
+  .main_wrap {
+    padding: 0 25px;
+  }
+}
+
+@media (max-width: 350px) {
+  .main_wrap {
+    padding: 0 10px;
+  }
+}
+

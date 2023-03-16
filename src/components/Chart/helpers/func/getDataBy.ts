@@ -1,6 +1,6 @@
 const convertDataForChart = (data: any) => {
   const convertedData = [];
-  for (let entries of Object.entries(data)) {
+  for (const entries of Object.entries(data)) {
     convertedData.push({ name: entries[0], value: entries[1] });
   }
   return convertedData;

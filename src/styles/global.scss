@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #2a4d4e;
+  --white: aliceblue;
+}
+
 button:focus-visible {
   outline: none;
 }
@@ -17,5 +22,5 @@ button:focus-visible {
 }
 
 .recharts-sector {
-  stroke: #2a4d4e;
+  stroke: var(--primary);
 }

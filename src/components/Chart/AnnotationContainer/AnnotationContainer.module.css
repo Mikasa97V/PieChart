@@ -1,5 +1,25 @@
 .main_container {
+  max-width: 550px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+  .main_container {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main_container {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 800px) {
+  .main_container {
+    align-items: center;
+    row-gap: 15px;
+  }
 }

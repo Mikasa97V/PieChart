@@ -1,70 +1,34 @@
 import { getTotalSum } from "@components/Chart/helpers/func/getTotalSun";
-import {
-  getDataByCategory,
-  getDataByCurrency,
-  getDetailData,
-} from "@components/Chart/helpers/func/getDataBy";
 import { getMaxValue } from "@components/Chart/helpers/func/getMaxValue";
 import { getMinValue } from "@components/Chart/helpers/func/getMinValue";
+import { getSortCategory } from "@components/Chart/helpers/func/getSortCategory";
+import { TData } from "@components/Chart/types";
 import { MockData } from "../../../../helpers/MockData";
 
-export const getFullDataByCurrency = () => {
-  const dataByCurrency = getDataByCurrency(MockData);
-  const maxValue = getMaxValue(MockData, "currency");
-  const minValue = getMinValue(MockData, "currency");
-  const totalSum = getTotalSum(MockData);
 
-  const sortCategory: Array<string> = [];
-  dataByCurrency.forEach((it) => {
-    sortCategory.push(it.name);
-  });
+const getData = (data: any, type?: string) => {
+  const maxValue = getMaxValue(MockData, type)
+  const minValue = getMinValue(MockData, type)
+  const totalSum = getTotalSum(MockData)
+  const sortCategory = getSortCategory(data, totalSum) as TData[]
 
   return {
-    dataByCurrency,
+    sortCategory,
+    totalSum,
+    maxValue,
+    minValue,
+  }
+}
+
+export const getFullData = (func: any,type?: string) => {
+  const chartData = func(MockData) as TData[]
+  const {sortCategory, totalSum, maxValue, minValue} = getData(chartData, type)
+
+  return {
+    chartData,
     sortCategory,
     totalSum,
     maxValue,
     minValue,
   };
-};
-
-export const getFullDataByCategory = () => {
-  const dataByCurrency = getDataByCategory(MockData);
-  const maxValue = getMaxValue(MockData, "category");
-  const minValue = getMinValue(MockData, "category");
-  const totalSum = getTotalSum(MockData);
-
-  const sortCategory: Array<string> = [];
-  dataByCurrency.forEach((it) => {
-    sortCategory.push(it.name);
-  });
-
-  return {
-    dataByCurrency,
-    sortCategory,
-    totalSum,
-    maxValue,
-    minValue,
-  };
-};
-
-export const getFullDetailedData = () => {
-  const dataByCurrency = getDetailData(MockData);
-  console.log(dataByCurrency);
-  const maxValue = getMaxValue(MockData);
-  const minValue = getMinValue(MockData);
-  const totalSum = getTotalSum(MockData);
-
-  const sortCategory: Array<string> = [];
-  dataByCurrency.forEach((it) => {
-    sortCategory.push(it.name);
-  });
-
-  return {
-    dataByCurrency,
-    sortCategory,
-    totalSum,
-    maxValue,
-    minValue,
-  };
-};
+}

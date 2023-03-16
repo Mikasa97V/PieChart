@@ -1,44 +1,13 @@
 import React from "react";
-import { CustomPieChart } from "@components/Chart/CustomPieChart/CustomPieChart";
-import { AnnotationContainer } from "@components/Chart/AnnotationContainer/AnnotationContainer";
-import s from "./Chart.module.css";
+import {CustomPieChart} from "@components/Chart/CustomPieChart/CustomPieChart";
+import {AnnotationContainer} from "@components/Chart/AnnotationContainer/AnnotationContainer";
+import {IChartContainer} from "@components/Chart/interface";
+import {getAnnotationLeft, getAnnotationRight} from "@components/Chart/helpers/func/getAnnotation";
+import s from "./Chart.module.scss";
 
-// interface IProps {
-//   dataByCurrency: any,
-//   sortCategory: any,
-//   totalSum: any,
-//   maxValue: any,
-//   minValue: any,
-// }
-
-const ChartContainer = ({ dataByCurrency, sortCategory, totalSum, maxValue, minValue }: any) => {
-  const annotationLeft = {
-    annotationTop: {
-      isSimply: true,
-      title: "Общая сумма активов",
-      currency: "",
-      value: String(totalSum),
-    },
-    annotationBottom: {
-      isSimply: true,
-      title: "Максимальная сумма - в ",
-      currency: maxValue.title,
-      value: String(maxValue.maxValue),
-    },
-  };
-
-  const annotationRight = {
-    annotationTop: {
-      isSimply: false,
-      sortCategory,
-    },
-    annotationBottom: {
-      isSimply: true,
-      title: "Минимальная сумма - в ",
-      currency: minValue.title,
-      value: String(minValue.minValue),
-    },
-  };
+const ChartContainer = ({chartData, sortCategory, totalSum, maxValue, minValue}: IChartContainer) => {
+  const annotationLeft = getAnnotationLeft(totalSum, maxValue)
+  const annotationRight = getAnnotationRight(sortCategory, minValue)
 
   return (
     <div className={s.chart_container}>
@@ -46,7 +15,7 @@ const ChartContainer = ({ dataByCurrency, sortCategory, totalSum, maxValue, minV
         annotationTop={annotationLeft.annotationTop}
         annotationBottom={annotationLeft.annotationBottom}
       />
-      <CustomPieChart data={dataByCurrency} />
+      <CustomPieChart data={chartData}/>
       <AnnotationContainer
         annotationTop={annotationRight.annotationTop}
         annotationBottom={annotationRight.annotationBottom}
@@ -55,4 +24,4 @@ const ChartContainer = ({ dataByCurrency, sortCategory, totalSum, maxValue, minV
   );
 };
 
-export { ChartContainer };
+export {ChartContainer};

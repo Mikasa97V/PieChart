@@ -1,0 +1,14 @@
+.chart_container {
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+}
+
+@media (max-width: 800px) {
+  .chart_container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 25px;
+  }
+}

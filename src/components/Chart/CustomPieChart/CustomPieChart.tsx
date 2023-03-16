@@ -1,14 +1,14 @@
 import React from "react";
-import { PieChart, Pie, Cell } from "recharts";
-import { IProps } from "@components/Chart/types";
-import { renderCustomizedLabel } from "@components/Chart/helpers/func/renderCustomizedLabel";
+import {PieChart, Pie, Cell, Tooltip} from "recharts";
 import { COLORS } from "@components/Chart/helpers/colors";
+import { IProps } from "@components/Chart/CustomPieChart/interface";
 
 const CustomPieChart = (props: IProps) => {
   const { data } = props;
+  const width = window.innerWidth * 0.2 // 0.2 - 20%
   return (
-    <PieChart width={600} height={600}>
-      <Pie data={data} label={renderCustomizedLabel} dataKey="value">
+    <PieChart width={width} height={width}>
+      <Pie data={data}  dataKey="value" outerRadius={width/2}>
         {data.map((entry, index) => (
           <Cell
             key={`cell-${entry}`}
@@ -17,6 +17,7 @@ const CustomPieChart = (props: IProps) => {
           />
         ))}
       </Pie>
+      <Tooltip/>
     </PieChart>
   );
 };

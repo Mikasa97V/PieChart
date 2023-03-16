@@ -1,12 +1,7 @@
 import React from "react";
 import { Annotation } from "@components/Chart/AnnotationContainer/Annotation/Annotation";
-import { ITextAnnotation } from "@components/Chart/types";
+import {IProps} from "@components/Chart/AnnotationContainer/interface";
 import s from "./AnnotationContainer.module.css";
-
-interface IProps {
-  annotationTop: ITextAnnotation;
-  annotationBottom: ITextAnnotation;
-}
 
 const AnnotationContainer = ({ annotationTop, annotationBottom }: IProps) => {
   return (
